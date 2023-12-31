@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>글 상세 정보</title>
+  <style>
+        .pull-right {
+            float: right;
+            margin-left: 10px;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+  <div class="page-header">
+    <h1>게시글 상세 정보</h1>
+  </div>
+
+  <table class="table">
+    <tr>
+      <td>Id:</td>
+      <td th:text="${post.id}"></td>
+    </tr>
+    <tr>
+      <td>title:</td>
+      <td th:text="${post.title}"></td>
+    </tr>
+    <tr>
+      <td>contents:</td>
+      <td th:text="${post.contents}"></td>
+    </tr>
+    <tr>
+      <td>author:</td>
+      <td th:text="${post.authorName}"></td>
+    </tr>
+  </table>
+</div>
+
+<div class="container">
+  <div class="pull-right" style="display: flex; justify-content: flex-end;">
+    <a th:href="@{'/post/delete?id=' + ${post.id}}" class="btn btn-primary">글 삭제</a>
+    <span style="margin-right: 10px;"></span> <!-- 간격을 주는 요소 추가 -->
+    <button id="edit-button" class="btn btn-primary">글 수정</button>
+  </div>
+  <br>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('edit-button').addEventListener('click', function() {
+        document.getElementById('edit-form').style.display = 'block';
+    });
+</script>
+
+</body>
+</html>

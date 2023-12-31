@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>게시글 관리</title>
+    <style>
+        .pull-right {
+            float: right;
+            margin-left: 10px;
+        }
+
+        .btn-primary {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>게시글 목록</h1>
+    </div>
+
+    <div class="pull-right">
+        <a href="/post/new" class="btn btn-primary">글쓰기</a>
+    </div>
+
+    <br/><br/><br/>
+
+    <div id="mainHide">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th class="col-md-2">id</th>
+                <th class="col-md-3">title</th>
+                <th class="col-md-4">글쓴이</th>
+                <th class="col-md-4">상세보기</th>
+                <!-- <th class="col-md-5">가입일</th> -->
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="post : ${postList}">
+                <td th:text="${post.id}"></td>
+                <td th:text="${post.title}"></td>
+                <td th:text="${post.authorName}"></td>
+                <td><a th:href="@{'/post/detail?id=' + ${post.id}}">상세보기</a></td> <!-- 수정된 부분 -->
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
